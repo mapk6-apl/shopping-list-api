@@ -52,8 +52,8 @@ export const itemsRoute = async (req: IncomingMessage, res: ServerResponse) => {
             });
             return;
         }
-         res.writeHead(405, {"content-type": "application/json"})
-                    res.end(JSON.stringify({error: "Invalid JSON payload"}))
+            res.writeHead(405, {"content-type": "application/json"}) //405 = Method Not Allowed
+            res.end(JSON.stringify({error: "Method now allowed on /items"}))
         
 
         //getting all items
