@@ -22,7 +22,7 @@ export const itemsRoute = async (req: IncomingMessage, res: ServerResponse) => {
         //getting all items
         if(req.method === 'GET' && !id){
             res.writeHead(200, {"content-type": "application/json"});
-            res.end(JSON.stringify(getItems)); //converts the array into JSON string; res.end signals end to request response
+            res.end(JSON.stringify(getItems())); //converts the array into JSON string; res.end signals end to request response
             return;
         }
 
@@ -42,6 +42,21 @@ export const itemsRoute = async (req: IncomingMessage, res: ServerResponse) => {
             })
 
         }
+
+        //deleting item
+        if(req.method === 'DELETE' && id){
+            const deleteSuccess = deleteItem(id)
+            
+            if(deleteSuccess){
+                res.writeHead(200, {"content-type":"application/json"})
+                res.end(JSON.stringify({message: 'Item deleted successfully'}))
+            }else {
+                res.writeHead(404, {"content-type":"application/json"})
+                res.end(JSON.stringify({message: 'Item not found'}))
+            }
+
+        }
+
 
     }
 }
