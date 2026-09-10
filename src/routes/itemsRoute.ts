@@ -18,5 +18,13 @@ export const itemsRoute = async (req: IncomingMessage, res: ServerResponse) => {
                 body += chunk.toString(); //we convert chunk from a buffer(raw binary data) to a string
             })
         }
+
+        //getting all items
+        if(req.method === 'GET' && !id){
+            res.writeHead(200, {"content-type": "application/json"});
+            res.end(JSON.stringify(getItems)); //converts the array into JSON string; res.end signals end to request response
+            return;
+        }
+
     }
 }
