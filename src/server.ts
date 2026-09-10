@@ -1,7 +1,7 @@
 import http, {IncomingMessage, ServerResponse} from "http"
 import {itemsRoute} from './routes/itemsRoute.js'
 
-const PORT = 4002
+const PORT = 4000;
 const requestListener = async (req: IncomingMessage, res: ServerResponse) => {
     await itemsRoute(req, res);
     // res.writeHead(200, {"content-type": "application/json"})

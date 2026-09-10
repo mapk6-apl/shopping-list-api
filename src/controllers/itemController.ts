@@ -4,7 +4,7 @@ let items: Item[] = []; //type annotation; this is an empty array and whatever i
 
 let currentId = 1;
 
-export const addItem = (id: number, name: string, category: string, quantity: number, notes: string): Item => {
+export const addItem = (name: string, category: string, quantity: number, notes: string): Item => {
     const newItem: Item = {id: currentId++, name, category, quantity, notes}
     items.push(newItem)
     return newItem
