@@ -26,5 +26,13 @@ export const itemsRoute = async (req: IncomingMessage, res: ServerResponse) => {
             return;
         }
 
+        //getting item by id
+        if(req.method ==='GET' && id){
+            const item = getItemById(id)
+            res.writeHead(item ? 200 : 404, {'content-type' : 'application/json'});
+            res.end(JSON.stringify(item || {message: "Item not found"}));
+            return;
+        }
+
     }
 }
