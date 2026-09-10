@@ -34,5 +34,14 @@ export const itemsRoute = async (req: IncomingMessage, res: ServerResponse) => {
             return;
         }
 
+        //updating item
+        if(req.method === 'PUT' && id){
+            let body = "";
+            req.on("data", chunk => {
+                body += chunk.toString();
+            })
+
+        }
+
     }
 }
