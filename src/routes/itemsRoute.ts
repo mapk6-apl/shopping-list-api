@@ -46,6 +46,12 @@ export const itemsRoute = async (req: IncomingMessage, res: ServerResponse) => {
             let body = "";
             req.on("data", chunk => {
                 body += chunk.toString();
+            });
+            req.on('end', () => {
+                const updatedFields = JSON.parse(body)
+                const updatedItem = updateItem(id, updatedFields)
+                res.writeHead(updatedItem ? 200 : 404, {'content-type' : 'application/json'});
+                res.end(JSON.stringify(updatedItem || {message: "Item not found"}));
             })
 
         }
