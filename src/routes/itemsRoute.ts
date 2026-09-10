@@ -16,7 +16,14 @@ export const itemsRoute = async (req: IncomingMessage, res: ServerResponse) => {
             let body = ""
             req.on("data", (chunk) => { //chunk contains the piece of data that just arrived; .on is the standard way of listening for events on an object; data is the specific event that is being listened for
                 body += chunk.toString(); //we convert chunk from a buffer(raw binary data) to a string
-            })
+            });
+            req.on("end", () => {
+                const {id, name, category, quantity, notes} = JSON.parse(body);
+                const newItem = addItem(id, name, category, quantity, notes);
+                res.writeHead(201, {"content-type": "application/json"})
+                res.end(JSON.stringify(newItem))
+            });
+            return;
         }
 
         //getting all items
