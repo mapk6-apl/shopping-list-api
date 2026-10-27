@@ -66,7 +66,7 @@ Retrieves the full list of products stored in temporary memory.
 
 ### 2. Get a Single Item
 Retrieves the details of a specific item using its unique numeric ID.
-* **URL:** `http://localhost:4000/items/:id`
+* **URL:** `http://localhost:4000/items/1`
 * **Method:** `GET`
 * **Success Response:**
   * **Code:** `200 OK`
