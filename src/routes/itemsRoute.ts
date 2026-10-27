@@ -52,9 +52,6 @@ export const itemsRoute = async (req: IncomingMessage, res: ServerResponse) => {
             });
             return;
         }
-            res.writeHead(405, {"content-type": "application/json"}) //405 = Method Not Allowed
-            res.end(JSON.stringify({error: "Method now allowed on /items"}))
-        
 
         //getting all items
         if(req.method === 'GET' && !id){
@@ -108,9 +105,11 @@ export const itemsRoute = async (req: IncomingMessage, res: ServerResponse) => {
                 res.writeHead(404, {"content-type":"application/json"})
                 res.end(JSON.stringify({message: 'Item not found'}))
             }
-
+            return;
         }
 
-
+        // No method/route matched
+        res.writeHead(405, {"content-type": "application/json"}) //405 = Method Not Allowed
+        res.end(JSON.stringify({error: "Method not allowed on /items"}))
     }
 }
