@@ -47,7 +47,7 @@ All data payloads must be structured as valid **JSON**.
 
 ### 1. Get All Items
 Retrieves the full list of products stored in temporary memory.
-* **URL:** `/items`
+* **URL:** `http://localhost:4000/items`
 * **Method:** `GET`
 * **Success Response:**
   * **Code:** `200 OK`
@@ -66,7 +66,7 @@ Retrieves the full list of products stored in temporary memory.
 
 ### 2. Get a Single Item
 Retrieves the details of a specific item using its unique numeric ID.
-* **URL:** `/items/:id`
+* **URL:** `http://localhost:4000/items/:id`
 * **Method:** `GET`
 * **Success Response:**
   * **Code:** `200 OK`
@@ -86,7 +86,7 @@ Retrieves the details of a specific item using its unique numeric ID.
 
 ### 3. Add an Item
 Creates a brand-new shopping item. The server dynamically handles assigning unique auto-incrementing IDs.
-* **URL:** `/items`
+* **URL:** `http://localhost:4000/items`
 * **Method:** `POST`
 * **Headers:** `Content-Type: application/json`
 * **Request Body:**
@@ -107,7 +107,7 @@ Creates a brand-new shopping item. The server dynamically handles assigning uniq
 
 ### 4. Update an Item
 Modifies explicit properties of an existing item by its ID. Fields are optional — only pass the properties you wish to modify.
-* **URL:** `/items/:id`
+* **URL:** `http://localhost:4000/items/:id`
 * **Method:** `PUT`
 * **Headers:** `Content-Type: application/json`
 * **Request Body Example:** *(Updating just the quantity)*
@@ -127,7 +127,7 @@ Modifies explicit properties of an existing item by its ID. Fields are optional 
 
 ### 5. Delete an Item
 Permanently removes a product from temporary storage by its numeric ID.
-* **URL:** `/items/:id`
+* **URL:** `http://localhost:4000/items/:id`
 * **Method:** `DELETE`
 * **Success Response:**
   * **Code:** `200 OK`
